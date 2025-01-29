@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: postgres-discuss
+    restart: always
+    environment:
+      #POSTGRES_USER: postgres
+      #POSTGRES_PASSWORD: postgres
+      #POSTGRES_DB: discuss_dev
+      DB_USERNAME: $DB_USERNAME
+      DB_PASSWORD: $DB_PASSWORD
+      DB_HOST: $DB_HOST
+      DB_NAME: $DB_NAME
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

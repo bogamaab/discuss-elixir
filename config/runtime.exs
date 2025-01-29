@@ -1,4 +1,19 @@
 import Config
+import Dotenvy
+
+env_dir_prefix = System.get_env("RELEASE_ROOT") || Path.expand("./")
+
+source!([
+  Path.join(env_dir_prefix, ".env"),
+  Path.join(env_dir_prefix, "#{config_env()}.env"),
+  System.get_env()
+])
+
+config :discuss, Discuss.Repo,
+  username: env!("DB_USERNAME", :string!),
+  password: env!("DB_PASSWORD", :string),
+  hostname: env!("DB_HOST", :string!),
+  database: env!("DB_NAME", :string)
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
