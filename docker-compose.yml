@@ -4,9 +4,6 @@ services:
     container_name: postgres-discuss
     restart: always
     environment:
-      #POSTGRES_USER: postgres
-      #POSTGRES_PASSWORD: postgres
-      #POSTGRES_DB: discuss_dev
       DB_USERNAME: $DB_USERNAME
       DB_PASSWORD: $DB_PASSWORD
       DB_HOST: $DB_HOST
